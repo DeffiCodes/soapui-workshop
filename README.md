@@ -1,7 +1,7 @@
 # Useful Links
-- [Swagger Petstore](https://petstore.swagger.io/#/)
-- [JsonPath Finder](https://jsonpathfinder.com/)
-- [RandomStringUtils - Apache Commons Lang](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RandomStringUtils.html)
+- [Swagger Petstore](https://petstore.swagger.io/#/): Documentation for Petstore API.
+- [JsonPath Finder](https://jsonpathfinder.com/): Tool for navigating and querying JSON structures.
+- [RandomStringUtils - Apache Commons Lang](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RandomStringUtils.html): Apache Commons Lang documentation for generating random strings.
 
 # SoapUI Properties
 
@@ -34,5 +34,10 @@ testRunner.testCase.setPropertyValue("preoperty_name", "property_value")
 def response = messageExchange.response.responseContent
 def json = new groovy.json.JsonSlurper().parseText(response)
 
-assert ...
+assert json.someKey == "expectedValue"
 ```
+
+# useful metods
+- toString(): Convert an object to its string representation.
+- isEmpty(): Check if a string or collection is empty.
+- size(): Get the size of a collection.
