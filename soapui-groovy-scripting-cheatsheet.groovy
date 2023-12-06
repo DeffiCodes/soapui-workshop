@@ -33,35 +33,36 @@ def requestContent = context.expand('${Request#request}')
 // Response Content
 def responseContent = context.expand('${Response#response}')
 
+// Parsing response to Json using JsonSlurper
+def response = messageExchange.response.responseContent
+def json = new groovy.json.JsonSlurper().parseText(response)
+
 // 5. Assertions:
 // Check Property Content
 assert context.expand('${#TestCase#propertyName}') == 'expectedValue'
 
 // Check Status Code
 assert messageExchange.responseStatusCode == 200
+assert messageExchange.response.getStatusCode() == 200
+
+// Check Response is not empty
+assert !json.isEmpty()
 
 // Check Response Contains a Substring
 assert responseContent.contains("expectedSubstring")
 
 // Check Not Null
-assert elementValue != null
+assert json.elementValue != null
 
 // Check Numeric Values
-assert elementValue.isNumber()
+assert json.elementValue.toString().isNumber()
 
 // Check Size of a List
-assert jsonResponse.items.size() == expectedSize
+assert json.items.size() == expectedSize
 
 // 6. Random Data Generation:
 import org.apache.commons.lang.RandomStringUtils
 def randomString = RandomStringUtils.randomAlphabetic(10)
-
-// 7. Working with JSON:
-// Parse JSON Response
-def jsonResponse = new groovy.json.JsonSlurper().parseText(context.response.getResponseContent())
-
-// Access JSON Elements
-def elementValue = jsonResponse.elementName
 
 // 8. Conditional Statements:
 switch (condition) {
