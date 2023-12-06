@@ -15,13 +15,13 @@
 context.expand('${#TestCase#property_name}')
 ```
 
-## set property
+## Set Property
 ```groovy
 testRunner.testCase.testSuite.project.setPropertyValue("preoperty_name", "property_value")
 testRunner.testCase.testSuite.setPropertyValue("preoperty_name", "property_value")
 testRunner.testCase.setPropertyValue("preoperty_name", "property_value")
 ```
-# groovy script test step
+# Groovy Script Test Step
 
 ```groovy
 import org.apache.commons.lang.RandomStringUtils
@@ -29,7 +29,7 @@ import org.apache.commons.lang.RandomStringUtils
 testRunner.testCase.setPropertyValue("preoperty_name", "property_value")
 ```
 
-# Groovy script assertion
+# Groovy Script Assertion
 ```groovy
 def response = messageExchange.response.responseContent
 def json = new groovy.json.JsonSlurper().parseText(response)
@@ -37,7 +37,7 @@ def json = new groovy.json.JsonSlurper().parseText(response)
 assert json.someKey == "expectedValue"
 ```
 
-# useful metods
+# Useful Methods
 - toString(): Convert an object to its string representation.
 - isEmpty(): Check if a string or collection is empty.
 - size(): Get the size of a collection.
